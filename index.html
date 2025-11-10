@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Dinossauros Holográficos</title>
+<title>Dinossauros Holográficos Avançado</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
   body {
@@ -28,7 +28,7 @@
     background: #0f1b29dd;
     border-radius: 14px;
     box-shadow: 0 0 20px #00ffd299 inset;
-    min-height: 600px;
+    min-height: 650px;
   }
   nav {
     width: 280px;
@@ -49,7 +49,7 @@
     list-style: none;
   }
   nav li {
-    padding: 20px 28px;
+    padding: 16px 24px;
     cursor: pointer;
     border-bottom: 1px solid #004d45aa;
     transition: background 0.3s, color 0.3s;
@@ -67,7 +67,7 @@
   }
   main {
     flex: 1;
-    padding: 45px 50px;
+    padding: 40px 50px;
     overflow-y: auto;
     position: relative;
   }
@@ -79,19 +79,17 @@
   main p {
     font-size: 1.15rem;
     line-height: 1.6;
-    max-width: 700px;
-    margin-bottom: 20px;
+    max-width: 720px;
+    margin-bottom: 10px;
     text-shadow: 0 0 6px #00ffd2aa;
   }
-
-  /* Container para o holograma */
   .hologram-container {
     perspective: 1000px;
     width: 320px;
     height: 320px;
-    margin-top: 25px;
+    margin-top: 20px;
+    margin-bottom: 35px;
   }
-  /* Holograma em wireframe SVG com animação de rotação */
   .hologram-svg {
     width: 100%;
     height: 100%;
@@ -104,16 +102,13 @@
     stroke-dasharray: 4 6;
     animation: dash 3s linear infinite;
   }
-
   @keyframes spin {
     from { transform: rotateY(0deg) rotateX(5deg);}
     to { transform: rotateY(360deg) rotateX(5deg);}
   }
-
   @keyframes dash {
     to { stroke-dashoffset: 1000; }
   }
-
   @media(max-width: 720px) {
     .container {
       flex-direction: column;
@@ -149,7 +144,7 @@
 </style>
 </head>
 <body>
-<header>Dinossauros Holográficos - Enciclopédia 3D</header>
+<header>Dinossauros Holográficos Avançado</header>
 <div class="container">
   <nav>
     <ul id="menu-list">
@@ -163,74 +158,4 @@
 </div>
 
 <script>
-  const dinossauros = [
-    { id: 'tyrannosaurus', nome: 'Tyrannosaurus Rex', desc: 'Grande carnívoro do fim do Cretáceo com mandíbula poderosa e tamanho impressionante.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: 'Até 12 metros e 8 toneladas', curiosidades: 'Uma das mordidas mais fortes, braços pequenos mas fortes.' },
-    { id: 'triceratops', nome: 'Triceratops', desc: 'Herbívoro com três chifres e gola óssea protetora.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '9 metros e até 12 toneladas', curiosidades: 'Chifres usados para defesa e disputa.' },
-    { id: 'velociraptor', nome: 'Velociraptor', desc: 'Pequeno e ágil, famoso por garras curvas e penas.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '2 metros e 15 kg', curiosidades: 'Provavelmente possuía penas.' },
-    { id: 'brachiosaurus', nome: 'Brachiosaurus', desc: 'Saurópode com pescoço e patas dianteiras longas.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '26 metros e 56 toneladas', curiosidades: 'Membros dianteiros mais longos.' },
-    { id: 'stegosaurus', nome: 'Stegosaurus', desc: 'Placas ósseas nas costas e espinhos na cauda.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '9 metros e 5 toneladas', curiosidades: 'Placas usadas na termorregulação.' }
-  ];
-
-  const menuList = document.getElementById('menu-list');
-  const contentArea = document.getElementById('content-area');
-
-  // Add dinos to menu
-  dinossauros.forEach(dino => {
-    const li = document.createElement('li');
-    li.textContent = dino.nome;
-    li.dataset.id = dino.id;
-    menuList.appendChild(li);
-  });
-
-  function mostrarHome() {
-    contentArea.innerHTML = `
-      <h2>Bem-vindo(a)!</h2>
-      <p>Explore detalhes incríveis dos dinossauros em uma experiência futurista com hologramas 3D simulados. Selecione um dinossauro no menu para começar.</p>
-    `;
-  }
-
-  function criarHologramaSVG() {
-    return `
-      <svg viewBox="0 0 300 300" class="hologram-svg">
-        <g class="hologram-lines" fill="none" stroke="#00ffd2" stroke-width="1.2" stroke-linejoin="round">
-          <path d="M150 20 L230 150 L150 280 L70 150 Z" stroke-dasharray="8 6"/>
-          <line x1="150" y1="20" x2="150" y2="280" stroke-dasharray="4 4"/>
-          <line x1="70" y1="150" x2="230" y2="150" stroke-dasharray="8 6"/>
-          <path d="M150 20 C170 90, 230 110, 230 150" stroke-dasharray="6 6"/>
-          <path d="M150 280 C130 210, 70 190, 70 150" stroke-dasharray="6 6"/>
-        </g>
-      </svg>
-    `;
-  }
-
-  function mostrarDino(dino) {
-    contentArea.innerHTML = `
-      <h2>${dino.nome}</h2>
-      <div class="hologram-container">${criarHologramaSVG()}</div>
-      <p>${dino.desc}</p>
-      <p><strong>Período:</strong> ${dino.periodo}</p>
-      <p><strong>Dieta:</strong> ${dino.dieta}</p>
-      <p><strong>Tamanho:</strong> ${dino.tamanho}</p>
-      <p><strong>Curiosidades:</strong> ${dino.curiosidades}</p>
-    `;
-  }
-
-  mostrarHome();
-
-  menuList.addEventListener('click', e => {
-    if(e.target.tagName.toLowerCase() === 'li') {
-      [...menuList.children].forEach(li => li.classList.remove('active'));
-      e.target.classList.add('active');
-
-      const id = e.target.dataset.id;
-      if(id === 'home' || !id) {
-        mostrarHome();
-      } else {
-        const dino = dinossauros.find(d => d.id === id);
-        mostrarDino(dino);
-      }
-    }
-  });
-</script>
-</body>
-</html>
+  const dinossauros =
