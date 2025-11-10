@@ -2,45 +2,45 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Dinossauros - Enciclopédia Avançada</title>
+<title>Dinossauros Holográficos</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
   body {
-    margin: 0; font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #222831, #393e46);
-    color: #eeeeee;
+    margin: 0; font-family: 'Orbitron', monospace;
+    background: #0a0f14;
+    color: #00ffd2;
+    overflow-x: hidden;
   }
   header {
-    background: #00adb5;
-    padding: 1.4rem 2rem;
+    background: #02111b;
+    padding: 1.5rem 2rem;
     text-align: center;
     font-weight: 700;
-    font-size: 1.8rem;
-    letter-spacing: 0.1rem;
-    box-shadow: 0 3px 10px #0d6e70aa;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    text-shadow: 0 0 8px #00ffd2aa;
     user-select: none;
   }
   .container {
     display: flex;
-    max-width: 1000px;
+    max-width: 1024px;
     margin: 30px auto;
-    background: #393e46dd;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px #000a;
-    min-height: 540px;
+    background: #0f1b29dd;
+    border-radius: 14px;
+    box-shadow: 0 0 20px #00ffd299 inset;
+    min-height: 600px;
   }
   nav {
     width: 280px;
-    background: #222831cc;
-    border-right: 2px solid #00adb5;
+    background: #02111bcc;
+    border-right: 3px solid #00ffd2;
     overflow-y: auto;
   }
   nav::-webkit-scrollbar {
     width: 7px;
   }
   nav::-webkit-scrollbar-thumb {
-    background: #00adb5cc;
+    background: #00ffd2cc;
     border-radius: 10px;
   }
   nav ul {
@@ -49,56 +49,107 @@
     list-style: none;
   }
   nav li {
-    padding: 18px 24px;
+    padding: 20px 28px;
     cursor: pointer;
-    border-bottom: 1px solid #444c5e80;
-    transition: background 0.3s;
-    font-weight: 600;
+    border-bottom: 1px solid #004d45aa;
+    transition: background 0.3s, color 0.3s;
+    font-weight: 700;
+    font-size: 1rem;
   }
   nav li:hover {
-    background: #00adb5bb;
-    color: #222831;
+    background: #00ffd2cc;
+    color: #001518;
   }
   nav li.active {
-    background: #00adb5;
-    color: #222831;
+    background: #00ffd2;
+    color: #001518;
+    box-shadow: inset 0 0 12px #00ffe8;
   }
   main {
     flex: 1;
-    padding: 32px 40px;
+    padding: 45px 50px;
     overflow-y: auto;
-    background: #222831dd;
+    position: relative;
   }
   main h2 {
-    margin-top: 0;
-    font-weight: 700;
-    color: #00ffe7;
-    text-shadow: 0 0 8px #00adb5cc;
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+    text-shadow: 0 0 12px #00fff6;
   }
   main p {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 6px #00ffd2aa;
   }
-  .dino-image {
-    max-width: 100%;
-    max-height: 300px;
-    display: block;
-    margin: 20px auto 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px #00adb5aa;
+
+  /* Container para o holograma */
+  .hologram-container {
+    perspective: 1000px;
+    width: 320px;
+    height: 320px;
+    margin-top: 25px;
   }
-  .info-section {
-    margin-bottom: 12px;
+  /* Holograma em wireframe SVG com animação de rotação */
+  .hologram-svg {
+    width: 100%;
+    height: 100%;
+    animation: spin 20s linear infinite;
   }
-  .info-title {
-    font-weight: 700;
-    color: #60f0c4;
-    margin-bottom: 4px;
+  .hologram-lines path,
+  .hologram-lines line {
+    stroke: #00ffd2;
+    stroke-width: 1.2;
+    stroke-dasharray: 4 6;
+    animation: dash 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotateY(0deg) rotateX(5deg);}
+    to { transform: rotateY(360deg) rotateX(5deg);}
+  }
+
+  @keyframes dash {
+    to { stroke-dashoffset: 1000; }
+  }
+
+  @media(max-width: 720px) {
+    .container {
+      flex-direction: column;
+      min-height: auto;
+    }
+    nav {
+      width: 100%;
+      height: 240px;
+      border-right: none;
+      border-bottom: 3px solid #00ffd2;
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    nav ul {
+      display: flex;
+      width: max-content;
+    }
+    nav li {
+      flex: none;
+      border-bottom: none;
+      border-right: 1px solid #004d45aa;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+    main {
+      padding: 30px 20px;
+    }
+    .hologram-container {
+      margin: 25px auto;
+    }
   }
 </style>
 </head>
 <body>
-<header>Enciclopédia Avançada de Dinossauros</header>
+<header>Dinossauros Holográficos - Enciclopédia 3D</header>
 <div class="container">
   <nav>
     <ul id="menu-list">
@@ -107,169 +158,23 @@
   </nav>
   <main id="content-area">
     <h2>Bem-vindo(a)!</h2>
-    <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros em detalhes. Clique no nome de um dinossauro no menu para conhecer suas características, período geológico, dieta, tamanho e curiosidades.</p>
-    <p>São 15 dinossauros fascinantes para você descobrir, ampliando seu conhecimento sobre essas incríveis criaturas pré-históricas.</p>
+    <p>Explore detalhes incríveis dos dinossauros em uma experiência futurista com hologramas 3D simulados. Selecione um dinossauro no menu para começar.</p>
   </main>
 </div>
 
 <script>
   const dinossauros = [
-    {
-      id: 'tyrannosaurus',
-      nome: 'Tyrannosaurus Rex',
-      desc: 'Grande carnívoro do fim do período Cretáceo, conhecido pela poderosa mandíbula e tamanho impressionante.',
-      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: 'Até 12 metros de comprimento e cerca de 8 toneladas',
-      curiosidades: 'Possuía uma das mordidas mais fortes já conhecidas entre os dinossauros. Seus braços eram pequenos, mas muito fortes.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Tyrannosaurus_Rex_by_David_Bonadonna.png'
-    },
-    {
-      id: 'triceratops',
-      nome: 'Triceratops',
-      desc: 'Herbívoro com três chifres e uma gola óssea protetora, um dos dinossauros terrestres maiores.',
-      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Cerca de 9 metros de comprimento e até 12 toneladas',
-      curiosidades: 'Os três chifres possivelmente eram usados para defesa e disputas territoriais.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Triceratops_BW.jpg'
-    },
-    {
-      id: 'velociraptor',
-      nome: 'Velociraptor',
-      desc: 'Pequeno, ágil e carnívoro, famoso por suas garras curvas e possível presença de penas.',
-      periodo: 'Cretáceo Superior (aprox. 75-71 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: 'Cerca de 2 metros de comprimento e 15 kg',
-      curiosidades: 'Provavelmente possuía penas e usava suas garras para capturar presas.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Velociraptor_dinoguy2.png'
-    },
-    {
-      id: 'brachiosaurus',
-      nome: 'Brachiosaurus',
-      desc: 'Saurópode herbívoro de pescoço e patas dianteiras longas, capaz de alcançar as folhas altas das árvores.',
-      periodo: 'Jurássico Superior (aprox. 154-150 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Até 26 metros de comprimento e cerca de 56 toneladas',
-      curiosidades: 'Possuía membros dianteiros mais longos que os posteriores, dando-lhe uma postura única.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Brachiosaurus_DB.jpg'
-    },
-    {
-      id: 'stegosaurus',
-      nome: 'Stegosaurus',
-      desc: 'Reconhecido pelas placas ósseas nas costas e espinhos na cauda usados para defesa.',
-      periodo: 'Jurássico Superior (aprox. 155-150 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Cerca de 9 metros de comprimento e 5 toneladas',
-      curiosidades: 'As placas dorsais podiam ajudar na termorregulação ou exibição.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Stegosaurus_BW.jpg'
-    },
-    {
-      id: 'ankylosaurus',
-      nome: 'Ankylosaurus',
-      desc: 'Dinossauro blindado, com uma cauda em forma de porrete para proteção contra predadores.',
-      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Até 8 metros de comprimento e 6 toneladas',
-      curiosidades: 'Seu escudo ósseo o tornava praticamente imune a ataques.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Ankylosaurus_caudal_club.png'
-    },
-    {
-      id: 'spinosaurus',
-      nome: 'Spinosaurus',
-      desc: 'Carnívoro semi-aquático com uma grande vela dorsal, considerado um dos maiores predadores.',
-      periodo: 'Cretáceo Médio (aprox. 112-93 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: 'Até 15 metros de comprimento e 7-20 toneladas',
-      curiosidades: 'Provavelmente passava muito tempo na água, similar a um crocodilo.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Spinosaurus_BW2.jpg'
-    },
-    {
-      id: 'dilophosaurus',
-      nome: 'Dilophosaurus',
-      desc: 'Carnívoro com duas cristas ósseas na cabeça, viveu no período Jurássico.',
-      periodo: 'Jurássico Inferior (aprox. 193-183 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: 'Cerca de 7 metros de comprimento e 400kg',
-      curiosidades: 'As cristas provavelmente serviam para comunicação visual e vocal.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Dilophosaurus_BW.jpg'
-    },
-    {
-      id: 'parasaurolophus',
-      nome: 'Parasaurolophus',
-      desc: 'Herbívoro com uma longa crista óssea tubular usada para comunicação e visual.',
-      periodo: 'Cretáceo Superior (aprox. 76-73 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Até 10 metros e 2,5 toneladas',
-      curiosidades: 'A crista produzia sons para comunicação e também podia reforçar a visão.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Parasaurolophus_HW.png'
-    },
-    {
-      id: 'iguanodon',
-      nome: 'Iguanodon',
-      desc: 'Herbívoro bípede famoso pelo dedo polegar em forma de espinho.',
-      periodo: 'Cretáceo Inferior (aprox. 140-110 milhões de anos atrás)',
-      dieta: 'Herbívoro',
-      tamanho: 'Cerca de 10 metros e 5 toneladas',
-      curiosidades: 'O espinho no polegar podia ser usado como arma ou ferramenta.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Iguanodon_BW.png'
-    },
-    {
-      id: 'allossaurus',
-      nome: 'Allosaurus',
-      desc: 'Predador do período Jurássico, com mandíbulas fortes e cristas ósseas acima dos olhos.',
-      periodo: 'Jurássico Superior (aprox. 155-145 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: '8,5 metros de comprimento e cerca de 2 toneladas',
-      curiosidades: 'Críticas sugerem comportamentos sociais e caça em grupo.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Allosaurus_DB.jpg'
-    },
-    {
-      id: 'pachycephalosaurus',
-      nome: 'Pachycephalosaurus',
-      desc: 'Dinossauro famoso pelo crânio em formato de cúpula que pode ter sido usado em combate.',
-      periodo: 'Cretáceo Superior (aprox. 76-65 milhões de anos atrás)',
-      dieta: 'Herbívoro/Onívoro',
-      tamanho: '4,5 metros e 450kg',
-      curiosidades: 'Possíveis disputas de cabeçadas entre machos pelo território.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Pachycephalosaurus_BW.jpg'
-    },
-    {
-      id: 'carnotaurus',
-      nome: 'Carnotaurus',
-      desc: 'Carnívoro com chifres curtos sobre os olhos e braços muito pequenos.',
-      periodo: 'Cretáceo Superior (aprox. 70 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: '8 metros de comprimento e 1 tonelada',
-      curiosidades: 'Era um predador rápido com adaptações para caça ágil.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Carnotaurus_BW.jpg'
-    },
-    {
-      id: 'microraptor',
-      nome: 'Microraptor',
-      desc: 'Pequeno dinossauro com penas nas patas e cauda, capaz de planar entre árvores.',
-      periodo: 'Cretáceo Inferior (aprox. 120 milhões de anos atrás)',
-      dieta: 'Carnívoro',
-      tamanho: '0,7 metros e 1kg',
-      curiosidades: 'Possuía quatro asas, tornando-o um dos primeiros "voadores".',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Microraptor_3D_reconstructed.png'
-    },
-    {
-      id: 'therizinosaurus',
-      nome: 'Therizinosaurus',
-      desc: 'Com garras longas e corpo estranho, provavelmente herbívoro ou onívoro.',
-      periodo: 'Cretáceo Superior (aprox. 70 milhões de anos atrás)',
-      dieta: 'Herbívoro/Onívoro',
-      tamanho: 'Até 10 metros e 5 toneladas',
-      curiosidades: 'Suas garras podiam chegar a 1 metro, talvez usadas para defesa ou alimentação.',
-      img: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Therizinosaurus_BW.jpg'
-    }
+    { id: 'tyrannosaurus', nome: 'Tyrannosaurus Rex', desc: 'Grande carnívoro do fim do Cretáceo com mandíbula poderosa e tamanho impressionante.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: 'Até 12 metros e 8 toneladas', curiosidades: 'Uma das mordidas mais fortes, braços pequenos mas fortes.' },
+    { id: 'triceratops', nome: 'Triceratops', desc: 'Herbívoro com três chifres e gola óssea protetora.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '9 metros e até 12 toneladas', curiosidades: 'Chifres usados para defesa e disputa.' },
+    { id: 'velociraptor', nome: 'Velociraptor', desc: 'Pequeno e ágil, famoso por garras curvas e penas.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '2 metros e 15 kg', curiosidades: 'Provavelmente possuía penas.' },
+    { id: 'brachiosaurus', nome: 'Brachiosaurus', desc: 'Saurópode com pescoço e patas dianteiras longas.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '26 metros e 56 toneladas', curiosidades: 'Membros dianteiros mais longos.' },
+    { id: 'stegosaurus', nome: 'Stegosaurus', desc: 'Placas ósseas nas costas e espinhos na cauda.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '9 metros e 5 toneladas', curiosidades: 'Placas usadas na termorregulação.' }
   ];
 
   const menuList = document.getElementById('menu-list');
   const contentArea = document.getElementById('content-area');
 
-  // Adicionar dinossauros ao menu
+  // Add dinos to menu
   dinossauros.forEach(dino => {
     const li = document.createElement('li');
     li.textContent = dino.nome;
@@ -277,21 +182,43 @@
     menuList.appendChild(li);
   });
 
-  // Mostrar conteúdo - inicial (home)
   function mostrarHome() {
     contentArea.innerHTML = `
       <h2>Bem-vindo(a)!</h2>
-      <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros em detalhes. Clique no nome de um dinossauro no menu para conhecer suas características, período geológico, dieta, tamanho e curiosidades.</p>
-      <p>São 15 dinossauros fascinantes para você descobrir, ampliando seu conhecimento sobre essas incríveis criaturas pré-históricas.</p>
+      <p>Explore detalhes incríveis dos dinossauros em uma experiência futurista com hologramas 3D simulados. Selecione um dinossauro no menu para começar.</p>
+    `;
+  }
+
+  function criarHologramaSVG() {
+    return `
+      <svg viewBox="0 0 300 300" class="hologram-svg">
+        <g class="hologram-lines" fill="none" stroke="#00ffd2" stroke-width="1.2" stroke-linejoin="round">
+          <path d="M150 20 L230 150 L150 280 L70 150 Z" stroke-dasharray="8 6"/>
+          <line x1="150" y1="20" x2="150" y2="280" stroke-dasharray="4 4"/>
+          <line x1="70" y1="150" x2="230" y2="150" stroke-dasharray="8 6"/>
+          <path d="M150 20 C170 90, 230 110, 230 150" stroke-dasharray="6 6"/>
+          <path d="M150 280 C130 210, 70 190, 70 150" stroke-dasharray="6 6"/>
+        </g>
+      </svg>
+    `;
+  }
+
+  function mostrarDino(dino) {
+    contentArea.innerHTML = `
+      <h2>${dino.nome}</h2>
+      <div class="hologram-container">${criarHologramaSVG()}</div>
+      <p>${dino.desc}</p>
+      <p><strong>Período:</strong> ${dino.periodo}</p>
+      <p><strong>Dieta:</strong> ${dino.dieta}</p>
+      <p><strong>Tamanho:</strong> ${dino.tamanho}</p>
+      <p><strong>Curiosidades:</strong> ${dino.curiosidades}</p>
     `;
   }
 
   mostrarHome();
 
-  // Atualizar conteúdo ao clicar no menu
   menuList.addEventListener('click', e => {
     if(e.target.tagName.toLowerCase() === 'li') {
-      // Atualizar ativo no menu
       [...menuList.children].forEach(li => li.classList.remove('active'));
       e.target.classList.add('active');
 
@@ -300,27 +227,7 @@
         mostrarHome();
       } else {
         const dino = dinossauros.find(d => d.id === id);
-        contentArea.innerHTML = `
-          <h2>${dino.nome}</h2>
-          <img src="${dino.img}" alt="${dino.nome}" class="dino-image" />
-          <p>${dino.desc}</p>
-          <div class="info-section">
-            <div class="info-title">Período Geológico:</div>
-            <div>${dino.periodo}</div>
-          </div>
-          <div class="info-section">
-            <div class="info-title">Dieta:</div>
-            <div>${dino.dieta}</div>
-          </div>
-          <div class="info-section">
-            <div class="info-title">Tamanho Aproximado:</div>
-            <div>${dino.tamanho}</div>
-          </div>
-          <div class="info-section">
-            <div class="info-title">Curiosidades:</div>
-            <div>${dino.curiosidades}</div>
-          </div>
-        `;
+        mostrarDino(dino);
       }
     }
   });
