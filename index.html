@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Dinossauros - Enciclopédia Interativa</title>
+<title>Dinossauros - Enciclopédia Avançada</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
   body {
@@ -28,7 +28,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px #000a;
-    min-height: 520px;
+    min-height: 540px;
   }
   nav {
     width: 280px;
@@ -78,20 +78,27 @@
   main p {
     font-size: 1.1rem;
     line-height: 1.5;
-    margin-bottom: 20px;
   }
   .dino-image {
     max-width: 100%;
     max-height: 300px;
     display: block;
-    margin: 0 auto 20px;
+    margin: 20px auto 25px;
     border-radius: 12px;
     box-shadow: 0 4px 20px #00adb5aa;
+  }
+  .info-section {
+    margin-bottom: 12px;
+  }
+  .info-title {
+    font-weight: 700;
+    color: #60f0c4;
+    margin-bottom: 4px;
   }
 </style>
 </head>
 <body>
-<header>Enciclopédia Interativa de Dinossauros</header>
+<header>Enciclopédia Avançada de Dinossauros</header>
 <div class="container">
   <nav>
     <ul id="menu-list">
@@ -100,8 +107,8 @@
   </nav>
   <main id="content-area">
     <h2>Bem-vindo(a)!</h2>
-    <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros. Clique no nome de um dinossauro no menu para conhecer suas características básicas e ver uma imagem ilustrativa.</p>
-    <p>São 15 dinossauros fascinantes para você descobrir, com curiosidades e informações essenciais para ampliar seu conhecimento.</p>
+    <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros em detalhes. Clique no nome de um dinossauro no menu para conhecer suas características, período geológico, dieta, tamanho e curiosidades.</p>
+    <p>São 15 dinossauros fascinantes para você descobrir, ampliando seu conhecimento sobre essas incríveis criaturas pré-históricas.</p>
   </main>
 </div>
 
@@ -111,90 +118,150 @@
       id: 'tyrannosaurus',
       nome: 'Tyrannosaurus Rex',
       desc: 'Grande carnívoro do fim do período Cretáceo, conhecido pela poderosa mandíbula e tamanho impressionante.',
+      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: 'Até 12 metros de comprimento e cerca de 8 toneladas',
+      curiosidades: 'Possuía uma das mordidas mais fortes já conhecidas entre os dinossauros. Seus braços eram pequenos, mas muito fortes.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/1/1e/Tyrannosaurus_Rex_by_David_Bonadonna.png'
     },
     {
       id: 'triceratops',
       nome: 'Triceratops',
       desc: 'Herbívoro com três chifres e uma gola óssea protetora, um dos dinossauros terrestres maiores.',
+      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Cerca de 9 metros de comprimento e até 12 toneladas',
+      curiosidades: 'Os três chifres possivelmente eram usados para defesa e disputas territoriais.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Triceratops_BW.jpg'
     },
     {
       id: 'velociraptor',
       nome: 'Velociraptor',
       desc: 'Pequeno, ágil e carnívoro, famoso por suas garras curvas e possível presença de penas.',
+      periodo: 'Cretáceo Superior (aprox. 75-71 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: 'Cerca de 2 metros de comprimento e 15 kg',
+      curiosidades: 'Provavelmente possuía penas e usava suas garras para capturar presas.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Velociraptor_dinoguy2.png'
     },
     {
       id: 'brachiosaurus',
       nome: 'Brachiosaurus',
       desc: 'Saurópode herbívoro de pescoço e patas dianteiras longas, capaz de alcançar as folhas altas das árvores.',
+      periodo: 'Jurássico Superior (aprox. 154-150 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Até 26 metros de comprimento e cerca de 56 toneladas',
+      curiosidades: 'Possuía membros dianteiros mais longos que os posteriores, dando-lhe uma postura única.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Brachiosaurus_DB.jpg'
     },
     {
       id: 'stegosaurus',
       nome: 'Stegosaurus',
       desc: 'Reconhecido pelas placas ósseas nas costas e espinhos na cauda usados para defesa.',
+      periodo: 'Jurássico Superior (aprox. 155-150 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Cerca de 9 metros de comprimento e 5 toneladas',
+      curiosidades: 'As placas dorsais podiam ajudar na termorregulação ou exibição.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Stegosaurus_BW.jpg'
     },
     {
       id: 'ankylosaurus',
       nome: 'Ankylosaurus',
       desc: 'Dinossauro blindado, com uma cauda em forma de porrete para proteção contra predadores.',
+      periodo: 'Cretáceo Superior (aprox. 68-66 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Até 8 metros de comprimento e 6 toneladas',
+      curiosidades: 'Seu escudo ósseo o tornava praticamente imune a ataques.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Ankylosaurus_caudal_club.png'
     },
     {
       id: 'spinosaurus',
       nome: 'Spinosaurus',
       desc: 'Carnívoro semi-aquático com uma grande vela dorsal, considerado um dos maiores predadores.',
+      periodo: 'Cretáceo Médio (aprox. 112-93 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: 'Até 15 metros de comprimento e 7-20 toneladas',
+      curiosidades: 'Provavelmente passava muito tempo na água, similar a um crocodilo.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Spinosaurus_BW2.jpg'
     },
     {
       id: 'dilophosaurus',
       nome: 'Dilophosaurus',
       desc: 'Carnívoro com duas cristas ósseas na cabeça, viveu no período Jurássico.',
+      periodo: 'Jurássico Inferior (aprox. 193-183 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: 'Cerca de 7 metros de comprimento e 400kg',
+      curiosidades: 'As cristas provavelmente serviam para comunicação visual e vocal.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Dilophosaurus_BW.jpg'
     },
     {
       id: 'parasaurolophus',
       nome: 'Parasaurolophus',
       desc: 'Herbívoro com uma longa crista óssea tubular usada para comunicação e visual.',
+      periodo: 'Cretáceo Superior (aprox. 76-73 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Até 10 metros e 2,5 toneladas',
+      curiosidades: 'A crista produzia sons para comunicação e também podia reforçar a visão.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/0/06/Parasaurolophus_HW.png'
     },
     {
       id: 'iguanodon',
       nome: 'Iguanodon',
       desc: 'Herbívoro bípede famoso pelo dedo polegar em forma de espinho.',
+      periodo: 'Cretáceo Inferior (aprox. 140-110 milhões de anos atrás)',
+      dieta: 'Herbívoro',
+      tamanho: 'Cerca de 10 metros e 5 toneladas',
+      curiosidades: 'O espinho no polegar podia ser usado como arma ou ferramenta.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Iguanodon_BW.png'
     },
     {
       id: 'allossaurus',
       nome: 'Allosaurus',
       desc: 'Predador do período Jurássico, com mandíbulas fortes e cristas ósseas acima dos olhos.',
+      periodo: 'Jurássico Superior (aprox. 155-145 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: '8,5 metros de comprimento e cerca de 2 toneladas',
+      curiosidades: 'Críticas sugerem comportamentos sociais e caça em grupo.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Allosaurus_DB.jpg'
     },
     {
       id: 'pachycephalosaurus',
       nome: 'Pachycephalosaurus',
       desc: 'Dinossauro famoso pelo crânio em formato de cúpula que pode ter sido usado em combate.',
+      periodo: 'Cretáceo Superior (aprox. 76-65 milhões de anos atrás)',
+      dieta: 'Herbívoro/Onívoro',
+      tamanho: '4,5 metros e 450kg',
+      curiosidades: 'Possíveis disputas de cabeçadas entre machos pelo território.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/b/b9/Pachycephalosaurus_BW.jpg'
     },
     {
       id: 'carnotaurus',
       nome: 'Carnotaurus',
       desc: 'Carnívoro com chifres curtos sobre os olhos e braços muito pequenos.',
+      periodo: 'Cretáceo Superior (aprox. 70 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: '8 metros de comprimento e 1 tonelada',
+      curiosidades: 'Era um predador rápido com adaptações para caça ágil.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Carnotaurus_BW.jpg'
     },
     {
       id: 'microraptor',
       nome: 'Microraptor',
       desc: 'Pequeno dinossauro com penas nas patas e cauda, capaz de planar entre árvores.',
+      periodo: 'Cretáceo Inferior (aprox. 120 milhões de anos atrás)',
+      dieta: 'Carnívoro',
+      tamanho: '0,7 metros e 1kg',
+      curiosidades: 'Possuía quatro asas, tornando-o um dos primeiros "voadores".',
       img: 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Microraptor_3D_reconstructed.png'
     },
     {
       id: 'therizinosaurus',
       nome: 'Therizinosaurus',
       desc: 'Com garras longas e corpo estranho, provavelmente herbívoro ou onívoro.',
+      periodo: 'Cretáceo Superior (aprox. 70 milhões de anos atrás)',
+      dieta: 'Herbívoro/Onívoro',
+      tamanho: 'Até 10 metros e 5 toneladas',
+      curiosidades: 'Suas garras podiam chegar a 1 metro, talvez usadas para defesa ou alimentação.',
       img: 'https://upload.wikimedia.org/wikipedia/commons/f/f3/Therizinosaurus_BW.jpg'
     }
   ];
@@ -214,8 +281,8 @@
   function mostrarHome() {
     contentArea.innerHTML = `
       <h2>Bem-vindo(a)!</h2>
-      <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros. Clique no nome de um dinossauro no menu para conhecer suas características básicas e ver uma imagem ilustrativa.</p>
-      <p>São 15 dinossauros fascinantes para você descobrir, com curiosidades e informações essenciais para ampliar seu conhecimento.</p>
+      <p>Este site é dedicado a explorar as maravilhas do mundo dos dinossauros em detalhes. Clique no nome de um dinossauro no menu para conhecer suas características, período geológico, dieta, tamanho e curiosidades.</p>
+      <p>São 15 dinossauros fascinantes para você descobrir, ampliando seu conhecimento sobre essas incríveis criaturas pré-históricas.</p>
     `;
   }
 
@@ -237,6 +304,22 @@
           <h2>${dino.nome}</h2>
           <img src="${dino.img}" alt="${dino.nome}" class="dino-image" />
           <p>${dino.desc}</p>
+          <div class="info-section">
+            <div class="info-title">Período Geológico:</div>
+            <div>${dino.periodo}</div>
+          </div>
+          <div class="info-section">
+            <div class="info-title">Dieta:</div>
+            <div>${dino.dieta}</div>
+          </div>
+          <div class="info-section">
+            <div class="info-title">Tamanho Aproximado:</div>
+            <div>${dino.tamanho}</div>
+          </div>
+          <div class="info-section">
+            <div class="info-title">Curiosidades:</div>
+            <div>${dino.curiosidades}</div>
+          </div>
         `;
       }
     }
