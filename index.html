@@ -2,160 +2,203 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Dinossauros Holográficos Avançado</title>
+<title>Livro Digital de Dinossauros Holográficos</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
   body {
-    margin: 0; font-family: 'Orbitron', monospace;
+    margin: 0;
     background: #0a0f14;
     color: #00ffd2;
-    overflow-x: hidden;
+    font-family: 'Orbitron', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
   }
   header {
-    background: #02111b;
-    padding: 1.5rem 2rem;
-    text-align: center;
+    font-size: 2.2rem;
     font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: 0.2rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    text-align: center;
+    background: #02111b;
     text-shadow: 0 0 8px #00ffd2aa;
     user-select: none;
   }
-  .container {
-    display: flex;
-    max-width: 1024px;
-    margin: 30px auto;
-    background: #0f1b29dd;
-    border-radius: 14px;
-    box-shadow: 0 0 20px #00ffd299 inset;
-    min-height: 650px;
-  }
-  nav {
-    width: 280px;
-    background: #02111bcc;
-    border-right: 3px solid #00ffd2;
-    overflow-y: auto;
-  }
-  nav::-webkit-scrollbar {
-    width: 7px;
-  }
-  nav::-webkit-scrollbar-thumb {
-    background: #00ffd2cc;
-    border-radius: 10px;
-  }
-  nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  nav li {
-    padding: 16px 24px;
-    cursor: pointer;
-    border-bottom: 1px solid #004d45aa;
-    transition: background 0.3s, color 0.3s;
-    font-weight: 700;
-    font-size: 1rem;
-  }
-  nav li:hover {
-    background: #00ffd2cc;
-    color: #001518;
-  }
-  nav li.active {
-    background: #00ffd2;
-    color: #001518;
-    box-shadow: inset 0 0 12px #00ffe8;
-  }
-  main {
-    flex: 1;
-    padding: 40px 50px;
-    overflow-y: auto;
+  #book-container {
+    flex-grow: 1;
+    max-width: 800px;
+    width: 90vw;
+    background: #0f1b29cc;
+    border-radius: 18px;
+    box-shadow: 0 0 40px #00ffd299 inset;
+    padding: 40px 50px 80px 50px;
     position: relative;
+    overflow-y: auto;
   }
-  main h2 {
+  h2 {
     font-size: 2.4rem;
-    margin-bottom: 15px;
-    text-shadow: 0 0 12px #00fff6;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #00fff6;
+    text-shadow: 0 0 14px #00ffd2cc;
   }
-  main p {
-    font-size: 1.15rem;
-    line-height: 1.6;
+  p {
     max-width: 720px;
-    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
     text-shadow: 0 0 6px #00ffd2aa;
   }
+  strong {
+    color: #60f0c4;
+  }
   .hologram-container {
-    perspective: 1000px;
+    margin: 30px auto 40px auto;
     width: 320px;
     height: 320px;
-    margin-top: 20px;
-    margin-bottom: 35px;
+    perspective: 1100px;
   }
   .hologram-svg {
     width: 100%;
     height: 100%;
-    animation: spin 20s linear infinite;
+    animation: spin 22s linear infinite;
   }
   .hologram-lines path,
   .hologram-lines line {
     stroke: #00ffd2;
-    stroke-width: 1.2;
+    stroke-width: 1.3;
     stroke-dasharray: 4 6;
-    animation: dash 3s linear infinite;
+    animation: dash 3.5s linear infinite;
   }
   @keyframes spin {
-    from { transform: rotateY(0deg) rotateX(5deg);}
-    to { transform: rotateY(360deg) rotateX(5deg);}
+    from { transform: rotateY(0deg) rotateX(6deg);}
+    to { transform: rotateY(360deg) rotateX(6deg);}
   }
   @keyframes dash {
     to { stroke-dashoffset: 1000; }
   }
-  @media(max-width: 720px) {
-    .container {
-      flex-direction: column;
-      min-height: auto;
-    }
-    nav {
-      width: 100%;
-      height: 240px;
-      border-right: none;
-      border-bottom: 3px solid #00ffd2;
-      display: flex;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-    nav ul {
-      display: flex;
-      width: max-content;
-    }
-    nav li {
-      flex: none;
-      border-bottom: none;
-      border-right: 1px solid #004d45aa;
-      padding: 14px 16px;
-      font-size: 0.9rem;
-    }
-    main {
-      padding: 30px 20px;
-    }
-    .hologram-container {
-      margin: 25px auto;
-    }
+  #navigator {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 800px;
+  }
+  button {
+    background: #00ffd2;
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #011a18;
+    border-radius: 12px;
+    box-shadow: 0 0 12px #00ffd2cc;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  button:disabled {
+    background: #006655;
+    cursor: default;
+    box-shadow: none;
+    color: #004433;
+  }
+  button:hover:not(:disabled) {
+    background: #00fff6;
+    box-shadow: 0 0 20px #00fff6cc;
   }
 </style>
 </head>
 <body>
-<header>Dinossauros Holográficos Avançado</header>
-<div class="container">
-  <nav>
-    <ul id="menu-list">
-      <li data-id="home" class="active">Página Inicial</li>
-    </ul>
-  </nav>
-  <main id="content-area">
-    <h2>Bem-vindo(a)!</h2>
-    <p>Explore detalhes incríveis dos dinossauros em uma experiência futurista com hologramas 3D simulados. Selecione um dinossauro no menu para começar.</p>
-  </main>
+<header>Livro Digital de Dinossauros Holográficos</header>
+<section id="book-container" role="main" aria-live="polite" tabindex="0">
+  <!-- Conteúdo dinâmico -->
+</section>
+<div id="navigator">
+  <button id="prev-btn" aria-label="Página anterior" disabled>Anterior</button>
+  <button id="next-btn" aria-label="Próxima página">Próximo</button>
 </div>
 
 <script>
-  const dinossauros =
+  const dinos = [
+    { nome: 'Tyrannosaurus Rex', desc: 'Grande carnívoro do fim do Cretáceo com mandíbula poderosa e tamanho impressionante.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: 'Até 12 metros e 8 toneladas', curiosidades: 'Uma das mordidas mais fortes, braços pequenos mas fortes.' },
+    { nome: 'Triceratops', desc: 'Herbívoro com três chifres e gola óssea protetora.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '9 metros e até 12 toneladas', curiosidades: 'Chifres usados para defesa e disputa.' },
+    { nome: 'Velociraptor', desc: 'Pequeno e ágil, famoso por garras curvas e penas.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '2 metros e 15 kg', curiosidades: 'Provavelmente possuía penas.' },
+    { nome: 'Brachiosaurus', desc: 'Saurópode com pescoço e patas dianteiras longas.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '26 metros e 56 toneladas', curiosidades: 'Membros dianteiros mais longos.' },
+    { nome: 'Stegosaurus', desc: 'Placas nas costas e espinhos na cauda.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '9 metros e 5 toneladas', curiosidades: 'Placas usadas para termorregulação.' },
+    { nome: 'Ankylosaurus', desc: 'Dinossauro blindado com cauda em forma de porrete.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '8 metros e 6 toneladas', curiosidades: 'Cauda usada para defesa poderosa.' },
+    { nome: 'Spinosaurus', desc: 'Carnívoro semi-aquático com vela dorsal.', periodo: 'Cretáceo Médio', dieta: 'Carnívoro', tamanho: '15 metros e até 20 toneladas', curiosidades: 'Provavelmente nadava como crocodilo.' },
+    { nome: 'Dilophosaurus', desc: 'Carnívoro com duas cristas ósseas na cabeça.', periodo: 'Jurássico Inferior', dieta: 'Carnívoro', tamanho: '7 metros e 400kg', curiosidades: 'Crestas usadas para comunicação.' },
+    { nome: 'Parasaurolophus', desc: 'Herbívoro com crista tubular.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '10 metros e 2,5 toneladas', curiosidades: 'Cresta usada para sons e visualização.' },
+    { nome: 'Iguanodon', desc: 'Herbívoro com polegar em espinho.', periodo: 'Cretáceo Inferior', dieta: 'Herbívoro', tamanho: '10 metros e 5 toneladas', curiosidades: 'Espinho usado como arma.' },
+    { nome: 'Allosaurus', desc: 'Predador com cristas ósseas acima dos olhos.', periodo: 'Jurássico Superior', dieta: 'Carnívoro', tamanho: '8,5 metros e 2 toneladas', curiosidades: 'Comportamento social possível.' },
+    { nome: 'Pachycephalosaurus', desc: 'Dinossauro com crânio em cúpula para combate.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro/Onívoro', tamanho: '4,5 metros e 450kg', curiosidades: 'Possíveis combates de cabeça.' },
+    { nome: 'Carnotaurus', desc: 'Carnívoro com chifres curtos e braços minúsculos.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '8 metros e 1 tonelada', curiosidades: 'Predador rápido e ágil.' },
+    { nome: 'Microraptor', desc: 'Pequeno dinossauro com quatro asas e penas.', periodo: 'Cretáceo Inferior', dieta: 'Carnívoro', tamanho: '0,7 metros e 1kg', curiosidades: 'Capaz de planar.' },
+    { nome: 'Therizinosaurus', desc: 'Com garras longas, corpo estranho, herbívoro/onívoro.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro/Onívoro', tamanho: '10 metros e 5 toneladas', curiosidades: 'Garras de até 1 metro.' },
+    { nome: 'Diplodocus', desc: 'Herbívoro com pescoço e cauda longos.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '27 metros e 15 toneladas', curiosidades: 'Cauda usada para defesa e comunicação.' },
+    { nome: 'Gallimimus', desc: 'Dinossauro rápido parecido com avestruz.', periodo: 'Cretáceo Superior', dieta: 'Onívoro', tamanho: '6 metros e 440kg', curiosidades: 'Bico sem dentes e grandes olhos.' },
+    { nome: 'Oviraptor', desc: 'Onívoro conhecido por proteger ovos.', periodo: 'Cretáceo Superior', dieta: 'Onívoro', tamanho: '2 metros e 20kg', curiosidades: 'Cresta curta e mandíbula forte.' },
+    { nome: 'Styracosaurus', desc: 'Herbívoro com gola e espinhos longos.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '5,5 metros e 2,7 toneladas', curiosidades: 'Até seis espinhos na gola.' },
+    { nome: 'Baryonyx', desc: 'Carnívoro semi-aquático com grande garra no polegar.', periodo: 'Cretáceo Inferior', dieta: 'Carnívoro', tamanho: '9 metros e 2 toneladas', curiosidades: 'Especialista em caça de peixes.' }
+  ];
+
+  const contentArea = document.getElementById('book-container');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  let currentPage = 0;
+
+  function criarHologramaSVG() {
+    return `
+      <svg viewBox="0 0 300 300" class="hologram-svg" aria-hidden="true" focusable="false">
+        <g class="hologram-lines" fill="none" stroke="#00ffd2" stroke-width="1.2" stroke-linejoin="round">
+          <path d="M150 20 L230 150 L150 280 L70 150 Z" stroke-dasharray="8 6"/>
+          <line x1="150" y1="20" x2="150" y2="280" stroke-dasharray="4 4"/>
+          <line x1="70" y1="150" x2="230" y2="150" stroke-dasharray="8 6"/>
+          <path d="M150 20 C170 90, 230 110, 230 150" stroke-dasharray="6 6"/>
+          <path d="M150 280 C130 210, 70 190, 70 150" stroke-dasharray="6 6"/>
+        </g>
+      </svg>
+    `;
+  }
+
+  function renderPage(index) {
+    const dino = dinos[index];
+    contentArea.innerHTML = `
+      <h2>${dino.nome}</h2>
+      <div class="hologram-container">${criarHologramaSVG()}</div>
+      <p>${dino.desc}</p>
+      <p><strong>Período:</strong> ${dino.periodo}</p>
+      <p><strong>Dieta:</strong> ${dino.dieta}</p>
+      <p><strong>Tamanho:</strong> ${dino.tamanho}</p>
+      <p><strong>Curiosidades:</strong> ${dino.curiosidades}</p>
+      <p><em>Página ${index + 1} de ${dinos.length}</em></p>
+    `;
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === dinos.length - 1;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if(currentPage > 0) {
+      currentPage--;
+      renderPage(currentPage);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if(currentPage < dinos.length -1) {
+      currentPage++;
+      renderPage(currentPage);
+    }
+  });
+
+  renderPage(currentPage);
+</script>
+</body>
+</html>
