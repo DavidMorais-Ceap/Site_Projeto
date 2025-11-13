@@ -1,84 +1,362 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carrinho Seguidor de Linha 4WD</title>
-    <style>
-        body {
-            background-color: #f5f5f5; /* cinza bem claro */
-            color: black;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 1rem;
-        }
-        p {
-            line-height: 1.5;
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        button {
-            background-color: #007bff;
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .output {
-            margin-top: 1.5rem;
-            font-weight: bold;
-            min-height: 2rem;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinossauros - História e Extinção</title>
+<style>
+/* Variáveis de cor para o tema minimalista */
+:root {
+  --bg-light: #ffffff;      /* Fundo principal (branco) */
+  --bg-secondary: #f9f9f9; /* Fundo suave (para header/nav) */
+  --color-accent: #007bff;   /* Azul para destaque */
+  --color-text: #333333;      /* Texto principal escuro */
+  --color-text-light: #555555; /* Texto secundário */
+  --border-color: #dddddd;   /* Cor da borda sutil */
+  /* --color-hologram-dark: #666666; -- Removido */
+}
+
+
+/* Importação da fonte Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+
+body {
+  margin: 0;
+  background: var(--bg-light);
+  /* Fonte limpa e moderna */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+/* --- ESTILOS GERAIS E NAVEGAÇÃO --- */
+header {
+  background: var(--bg-secondary);
+  padding: 15px 30px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-align: center;
+  user-select: none;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
+}
+
+
+nav {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+nav button {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+nav button:hover,
+nav button.active {
+  background: var(--color-accent);
+  color: var(--bg-light);
+  border-color: var(--color-accent);
+}
+
+
+main {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 30px 40px;
+  position: relative;
+  z-index: 2;
+  /* Centraliza o conteúdo de texto */
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box; /* Garante que o padding não estoure a largura */
+}
+
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--color-text);
+}
+
+
+strong {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+
+/* --- ESTILOS DA IMAGEM DO DINOSSAURO --- */
+.dino-image {
+  width: 100%;
+  max-width: 600px; /* Limita o tamanho em telas grandes */
+  height: auto;
+  border-radius: 8px; /* Bordas arredondadas */
+  margin: 0 auto 20px auto; /* Centraliza e adiciona espaço */
+  display: block;
+  background-color: #eee; /* Fundo enquanto carrega */
+  border: 1px solid var(--border-color);
+}
+
+
+/* --- ESTILOS DO HOLOGRAMA (REMOVIDOS) --- */
+/*
+.hologram-container { ... }
+.hologram-svg { ... }
+.hologram-lines path,
+.hologram-lines line { ... }
+@keyframes rotate { ... }
+@keyframes dash { ... }
+*/
+
+
+/* --- RESPONSIVIDADE --- */
+@media(max-width: 600px) {
+  nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 8px 8px;
+    /* Esconde a barra de rolagem visualmente, mas permite rolar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+  }
+  nav::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+
+  nav button {
+    flex: none; /* Permite que os botões tenham larguras diferentes */
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+
+
+  main {
+    padding: 20px 25px;
+  }
+
+
+  h2 {
+    font-size: 2rem;
+  }
+
+
+  h3 {
+    font-size: 1.3rem;
+  }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Montagem do Carrinho Seguidor de Linha 4WD</h1>
-        <p>
-            Um carrinho seguidor de linha 4WD é um robô que segue uma linha traçada no chão
-            usando sensores para detectar o caminho. Este site ajuda a entender as etapas básicas
-            da montagem.
-        </p>
-        <button onclick="showSteps()">Mostrar Passos da Montagem</button>
-        <div class="output" id="stepsOutput"></div>
-    </div>
 
-    <script>
-        function showSteps() {
-            const steps = [
-                '1. Prepare o chassi 4WD do carrinho.',
-                '2. Instale os motores nas rodas.',
-                '3. Conecte o sensor de linha na parte frontal do carrinho.',
-                '4. Ligue o controlador e faça a conexão com os motores e sensores.',
-                '5. Programe o controlador para seguir a linha usando os sensores.',
-                '6. Teste e ajuste para garantir que o carrinho segue a linha corretamente.'
-            ];
-            const outputDiv = document.getElementById('stepsOutput');
-            outputDiv.innerHTML = '<ul>' + steps.map(step => `<li>${step}</li>`).join('') + '</ul>';
-        }
-    </script>
+
+<!-- O leaves-container foi removido --><header>Dinossauros - História e Extinção</header>
+<nav id="dino-nav" aria-label="Navegação entre dinossauros"></nav>
+<main id="dino-content" tabindex="0" aria-live="polite" aria-atomic="true">
+  <!-- O conteúdo será carregado aqui pelo JavaScript --></main>
+
+
+<audio id="dinoAudio" preload="auto"></audio>
+
+
+<script>
+// URL base de um repositório de domínio público para fins de demonstração
+const PUBLIC_AUDIO_URL = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/12025/';
+
+
+const dinos = [
+  // Sons atribuídos, usando arquivos .mp3 genéricos para simular sons de dinossauros
+  { nome: 'Tyrannosaurus Rex', desc: 'Grande carnívoro do fim do Cretáceo com mandíbula poderosa e tamanho impressionante.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: 'Até 12 metros e 8 toneladas', curiosidades: 'Uma das mordidas mais fortes, braços pequenos mas fortes.', som: PUBLIC_AUDIO_URL + 'roar.mp3', imagem: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fzap.aeiou.pt%2Fcientistas-revelam-como-era-realmente-o-t-rex-185904&psig=AOvVaw0m5QKjCQxVnTE2y-rdH5o-&ust=1763035840209000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCKjI8sHK7JADFQAAAAAdAAAAABAK' },
+  { nome: 'Triceratops', desc: 'Herbívoro com três chifres e gola óssea protetora.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro', tamanho: '9 metros e até 12 toneladas', curiosidades: 'Chifres usados para defesa e disputa.', som: PUBLIC_AUDIO_URL + 'stomp.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Triceratops.png' },
+  { nome: 'Velociraptor', desc: 'Pequeno e ágil, famoso por garras curvas e penas.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '2 metros e 15 kg', curiosidades: 'Provavelmente possuía penas.', som: PUBLIC_AUDIO_URL + 'screech.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Velociraptor.png' },
+  { nome: 'Brachiosaurus', desc: 'Saurópode com pescoço e patas dianteiras longas.', periodo: 'Jurássico Superior', dieta: 'Herbívoro', tamanho: '26 metros e 56 toneladas', curiosidades: 'Membros dianteiros mais longos.', som: PUBLIC_AUDIO_URL + 'brachiosaurus.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Brachiosaurus.png' },
+  { nome: 'Spinosaurus', desc: 'Carnívoro semi-aquático com vela dorsal.', periodo: 'Cretáceo Médio', dieta: 'Carnívoro', tamanho: '15 metros e até 20 toneladas', curiosidades: 'Provavelmente nadava como crocodilo.', som: PUBLIC_AUDIO_URL + 'spinosaurus.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Spinosaurus.png' },
+  { nome: 'Allosaurus', desc: 'Predador com cristas ósseas acima dos olhos.', periodo: 'Jurássico Superior', dieta: 'Carnívoro', tamanho: '8,5 metros e 2 toneladas', curiosidades: 'Comportamento social possível.', som: PUBLIC_AUDIO_URL + 'roar.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Allosaurus.png' },
+  { nome: 'Giganotosaurus', desc: 'Um dos maiores predadores terrestres, maior que o T. Rex em comprimento.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '13 a 14 metros e até 8 toneladas', curiosidades: 'Descoberto na Argentina, caçava grandes saurópodes.', som: PUBLIC_AUDIO_URL + 'giganotosaurus.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Giganotosaurus.png' },
+  { nome: 'Kaprosuchus', desc: 'Um crocodilomorfo terrestre extinto, conhecido pelos seus grandes dentes caninos parecidos com presas.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: 'Cerca de 6 metros', curiosidades: 'Possuía um crânio robusto e pernas longas, sugerindo que era um predador terrestre rápido e ativo.', som: PUBLIC_AUDIO_URL + 'croc_snarl.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Kaprosuchus.png' },
+  { nome: 'Carnotaurus', desc: 'Carnívoro com chifres curtos e braços minúsculos.', periodo: 'Cretáceo Superior', dieta: 'Carnívoro', tamanho: '8 metros e 1 tonelada', curiosidades: 'Predador rápido e ágil.', som: PUBLIC_AUDIO_URL + 'screech.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Carnotaurus.png' },
+  { nome: 'Therizinosaurus', desc: 'Com garras longas, corpo estranho, herbívoro/onívoro.', periodo: 'Cretáceo Superior', dieta: 'Herbívoro/Onívoro', tamanho: '10 metros e 5 toneladas', curiosidades: 'Garras de até 1 metro.', som: PUBLIC_AUDIO_URL + 'therizinosaurus.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Therizinosaurus.png' },
+  { nome: 'Baryonyx', desc: 'Carnívoro semi-aquático com grande garra no polegar.', periodo: 'Cretáceo Inferior', dieta: 'Carnívoro', tamanho: '9 metros e 2 toneladas', curiosidades: 'Especialista em caça de peixes.', som: PUBLIC_AUDIO_URL + 'spinosaurus.mp3', imagem: 'https://placehold.co/600x400/007bff/ffffff?text=Baryonyx.png' }
+];
+
+
+const extinctionPage = {
+    titulo: 'O Fim da Era Mesozóica',
+    subtitulo: 'O Impacto que Mudou o Planeta',
+    descricao: 'Há cerca de 66 milhões de anos, um evento catastrófico encerrou o domínio dos dinossauros. A principal teoria aponta para o impacto de um **asteroide gigante** na região de Chicxulub, no México. O choque lançou quantidades maciças de poeira e detritos na atmosfera, bloqueando o sol e causando um inverno nuclear prolongado. Isso levou ao colapso das cadeias alimentares, resultando na extinção em massa do Cretáceo-Paleogeno (K-Pg), eliminando cerca de 75% das espécies de vida na Terra, incluindo todos os dinossauros não-avianos.',
+    adicional: 'O impacto inicial causou terremotos maciços e tsunamis globais. No entanto, o fator de extinção mais devastador foi a mudança climática a longo prazo. A escuridão e o frio repentinos mataram a maior parte da vida vegetal (produtores primários), levando à fome os herbívoros e, consequentemente, os grandes carnívoros. Apenas pequenos animais e criaturas aquáticas conseguiram sobreviver à crise. A extinção K-Pg abriu o caminho para a ascensão dos mamíferos, que viriam a dominar o planeta, marcando o início da Era Cenozoica.'
+};
+
+
+const nav = document.getElementById('dino-nav');
+const content = document.getElementById('dino-content');
+// A referência ao leavesContainer foi removida
+const dinoAudio = document.getElementById('dinoAudio');
+
+
+
+
+// --- Função para criar o SVG do Holograma (REMOVIDA) ---
+/*
+function createHologramSVG() {
+  return `...`;
+}
+*/
+
+
+function playDinoSound(soundUrl) {
+    if (soundUrl) {
+        dinoAudio.pause();
+        dinoAudio.currentTime = 0; // Reinicia o áudio
+        dinoAudio.src = soundUrl;
+        dinoAudio.play().catch(error => {
+            // Captura erro se o navegador bloquear o autoplay
+            console.warn("Não foi possível tocar o áudio automaticamente:", error);
+        });
+    }
+}
+
+
+function loadContent(index) {
+  let htmlContent = '';
+
+
+  if (index === -1) {
+    // Página de Extinção (Home)
+    htmlContent = `
+      <h2>${extinctionPage.titulo}</h2>
+      <h3>${extinctionPage.subtitulo}</h3>
+      <p>${extinctionPage.descricao}</p>
+      <p>${extinctionPage.adicional}</p>
+      `;
+   
+    content.innerHTML = htmlContent;
+    // Para a música de fundo ou som do dinossauro
+    dinoAudio.pause();
+
+
+  } else {
+    // Carregar um Dinossauro específico
+    const dino = dinos[index];
+    htmlContent = `
+      <h2>${dino.nome}</h2>
+     
+      <!-- Imagem do Dinossauro -->
+      <img src="${dino.imagem}"
+           alt="Ilustração de ${dino.nome}"
+           class="dino-image"
+           onerror="this.onerror=null;this.src='https://placehold.co/600x400/eeeeee/999999?text=Imagem+N%C3%A3o+Encontrada';">
+           
+      <p>${dino.desc}</p>
+      <p><strong>Período:</strong> ${dino.periodo}</p>
+      <p><strong>Dieta:</strong> ${dino.dieta}</p>
+      <p><strong>Tamanho:</strong> ${dino.tamanho}</p>
+      <p><strong>Curiosidades:</strong> ${dino.curiosidades}</p>
+    `;
+    content.innerHTML = htmlContent;
+   
+    // Toca o som ao carregar a página do dinossauro
+    playDinoSound(dino.som);
+  }
+
+
+  // Ativa o botão correto
+  setActiveButton(nav.children[index === -1 ? 0 : index + 1]);
+}
+
+
+function setActiveButton(activeBtn) {
+  for(let btn of nav.children) {
+    btn.classList.remove('active');
+  }
+  activeBtn.classList.add('active');
+}
+
+
+// --- Criação da Navegação ---
+
+
+// 1. Botão da Página de Extinção (Home)
+const extinctionBtn = document.createElement('button');
+extinctionBtn.textContent = 'Extinção (Home)';
+extinctionBtn.setAttribute('aria-label', 'Mostrar a página inicial sobre a extinção dos dinossauros');
+extinctionBtn.addEventListener('click', () => {
+  loadContent(-1);
+  content.focus();
+});
+nav.appendChild(extinctionBtn);
+
+
+// 2. Botões dos Dinossauros
+dinos.forEach((dino, i) => {
+  const btn = document.createElement('button');
+  btn.textContent = dino.nome;
+  btn.setAttribute('aria-label', `Mostrar informações do dinossauro ${dino.nome}`);
+  btn.addEventListener('click', () => {
+    loadContent(i);
+    content.focus();
+  });
+  nav.appendChild(btn);
+});
+
+
+// --- Lógica das Folhas Animadas (Removida) ---
+// A função createLeaf() foi removida
+// O loop de inicialização das folhas foi removido
+
+
+// --- Inicialização ---
+
+
+// Mostrar a página de Extinção inicialmente (índice -1)
+loadContent(-1);
+
+
+</script>
 </body>
 </html>
+
